@@ -1,0 +1,43 @@
+{
+  "cli": {
+    "version": ">= 13.2.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://192.168.1.11:3001/api",
+        "EXPO_PUBLIC_ENV_MODE": "network",
+        "EXPO_PUBLIC_THERAPIST_EMAIL": "clinic@caretrace.uk"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://clinic-consent-app-production.up.railway.app/api",
+        "EXPO_PUBLIC_ENV_MODE": "production",
+        "EXPO_PUBLIC_THERAPIST_EMAIL": "clinic@caretrace.uk"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "archive"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://clinic-consent-app-production.up.railway.app/api",
+        "EXPO_PUBLIC_ENV_MODE": "production",
+        "EXPO_PUBLIC_THERAPIST_EMAIL": "clinic@caretrace.uk"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
