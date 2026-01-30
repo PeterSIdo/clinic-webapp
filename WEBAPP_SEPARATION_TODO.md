@@ -38,5 +38,5 @@ Separate web app from API to eliminate config.json conflicts by creating a new r
 
 ## Notes
 - Original repo: https://github.com/PeterSIdo/clinic-consent-app.git (API)
-- New repo: clinic-consent-webapp (Web App)
+- New repo: clinic-webapp (Web App)
 - Local path: C:\Users\Peter\clinic-webapp
