@@ -16,12 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static files from dist directory
-app.use(express.static(path.join(__dirname, 'dist'), {
-  maxAge: '1d', // Cache static assets for 1 day
-  etag: true,
-}));
-
+// API routes MUST come before static file serving
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({
@@ -32,7 +27,25 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Config check endpoint (for debugging)
+app.get('/api/config', (req, res) => {
+  res.json({
+    apiUrl: process.env.EXPO_PUBLIC_API_URL || 'NOT SET',
+    therapistEmail: process.env.EXPO_PUBLIC_THERAPIST_EMAIL || 'NOT SET',
+    nodeEnv: process.env.NODE_ENV || 'development',
+    railwayUrl: process.env.RAILWAY_STATIC_URL || 'NOT SET',
+    note: 'These are runtime environment variables. The webapp may have different values baked in during build time.'
+  });
+});
+
+// Serve static files from dist directory
+app.use(express.static(path.join(__dirname, 'dist'), {
+  maxAge: '1d', // Cache static assets for 1 day
+  etag: true,
+}));
+
 // Handle client-side routing - serve index.html for all routes
+// This MUST be last
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
