@@ -1,5 +1,6 @@
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["nodejs-20_x"]
+nixpkgsArchive = "latest"
 
 [phases.install]
 cmds = ["npm ci"]
