@@ -54,7 +54,7 @@ class EmailService {
       // Create abort controller for timeout
       // Increased timeout for Railway deployment (PDF generation can take time)
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 second timeout (2 minutes)
+      const timeoutId = setTimeout(() => controller.abort(), 300000); // 300 second timeout (5 minutes)
       
       try {
         const response = await fetch(fullUrl, {
